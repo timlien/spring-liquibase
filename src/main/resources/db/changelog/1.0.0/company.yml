@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1.0.0.1
+      author: tim.lien
+      changes:
+        - createTable:
+            tableName: company
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 1.0.0.2
+      author: tim.lien
+      changes:
+        - loadData:
+            tableName: company
+            relativeToChangelogFile: true
+            file: company.csv
